@@ -1,0 +1,56 @@
+
+in mysql:-
+--------
+
+create database utility;
+
+use utility;
+
+create table AppData(ID int NOT NULL AUTO_INCREMENT, State varchar(100), City varchar(100), Location varchar(200), PinCode varchar(8), Bank varchar(40), Restaurant varchar(50), Hospital varchar(60), ShoppingMall varchar(60), School varchar(30), PRIMARY KEY(ID));
+
+
+
+in hduser terminal:-
+------------------
+
+sudo chmod 777 -R /var/lib/mysql
+
+sudo cp /home/hduser/HadoopAppdata.csv  /var/lib/mysql/utility
+
+
+
+in mysql:-
+--------
+
+Load data local infile 'HadoopAppdata.csv' into table AppData fields terminated by ',' enclosed by '"' lines terminated by '\n' ignore 1 lines (State, City, Location, PinCode, Bank, Restaurant, Hospital, ShoppingMall, School);
+
+select * from AppData;
+455 records
+
+
+in Hive terminal:-
+----------------
+show databases;
+
+create database utility;
+
+
+
+
+in hduser terminal:-
+------------------
+
+put MyMenu.sh file in /home/hduser then give below command:-
+
+chmod u+x MyMenu.sh 
+
+
+
+Run below the script in hduser terminal:-
+./MyMenu.sh
+
+
+
+
+
+
